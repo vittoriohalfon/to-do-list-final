@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-function TaskForm({ onAddTask }) {
+function TaskForm({ onAddTask, categories }) {
   const [name, setName] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState('low');
+  const [category, setCategory] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +17,7 @@ function TaskForm({ onAddTask }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="task-form">
       <label htmlFor="task-input">Task:</label>
       <input type="text" id="task-input" value={name} onChange={(e) => setName(e.target.value)} required />
 
@@ -30,7 +31,7 @@ function TaskForm({ onAddTask }) {
         <option value="high">High</option>
       </select>
 
-      <button type="submit">Add Task</button>
+      <button type="submit" className="submit-btn">Add Task</button>
     </form>
   );
 }
